@@ -9,23 +9,55 @@ const MONGO_URI = `mongodb+srv://${USER}:${PASSWORD}@${config.dbHost}:${config.d
 
 class MongoConnect {
   constructor() {
-    this.client = new MongoClient(MONGO_URI, { useNewUrlParser: true });
+    this.client = new MongoClient(MONGO_URI, { useUnifiedTopology: true });
     this.dbName = DB_NAME;
   }
 
   connect() {
-    if (!MongoLib.connection) {
-      MongoLib.connection = new Promise((resolve, reject) => {
+    if (!MongoConnect.connection) {
+      MongoConnect.connection = new Promise((resolve, reject) => {
         this.client.connect(err => {
           if (err) {
             reject(err);
           }
-          console.log('Connected succesfully to mongo');
+          console.log(' -------------- Connected succesfully to mongo:',this.dbName);
           resolve(this.client.db(this.dbName));
         });
       });
     }
-    return MongoLib.connection;
+    return MongoConnect.connection;
+  }
+
+  getAll(collection, query){
+    return this.connect().then(db => {
+      console.log(`getAll: Connected to: ${db}`)
+      return db.collection(collection).find(query).toArray();
+    })
+  }
+
+  get(collection, id){
+    return this.connect().then(db => {
+      return db.collection(collection).findOne({_id: ObjectId(id)});
+    })
+  }
+
+  create(collection, data){
+    console.log(`creating on: ${collection} the data: ${data}`)
+    return this.connect().then(db => {
+      return db.collection(collection).insertOne(data);
+    }).then(result => result.insertedId)
+  }
+
+  update(collection,id, data){
+    return this.connect().then(db => {
+      return db.collection(collection).updateOne({_id: ObjectId}, {$set: data}, {upsert: true});
+    })
+  }
+
+  delete(collection,id){
+    return this.connect().then(db => {
+      return db.collection(collection).deleteOne({_id: ObjectId(id)})
+    })
   }
 }
 

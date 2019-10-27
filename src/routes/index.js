@@ -23,6 +23,10 @@ const platziStore = (app) => {
     res.status(200).json(storeProducts);
   });
 
+  router.get('/lp', async (req, res, next) => {
+    const storeProducts = await productService.loadProducts()
+    res.status(200).json(storeProducts);
+  });
   router.get('*', (req, res) => {
     res.status(404).send('Error 404');
   });
