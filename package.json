@@ -13,6 +13,7 @@
   },
   "scripts": {
     "dev": "DEBUG=app:* nodemon src/index.js",
+    "devw": "nodemon src/index.js",
     "start": "NODE_ENV=production node src/index.js"
   },
   "repository": {
