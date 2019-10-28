@@ -65,6 +65,7 @@ const platziStore = app => {
 
   // eslint-disable-next-line no-unused-vars
   router.post('/lp', async (req, res, next) => {
+    console.log("LP:...")
     const storeProducts = await productService.loadProducts();
     res.status(200).json(storeProducts);
   });
