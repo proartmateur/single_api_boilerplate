@@ -1,6 +1,5 @@
 const express = require('express');
 const path = require('path');
-const { strings } = require('../utils/lang/es');
 const receipt = '../assets/receipt.pdf';
 
 const usersRouter = require('./users');
@@ -24,11 +23,11 @@ const platziStore = app => {
   });
 
   // eslint-disable-next-line no-unused-vars
-  router.post('/lp', async (req, res, next) => {
-    console.log("Loading Products:...")
+  /* router.post('/lp', async (req, res, next) => {
+    console.log('Loading Products:...');
     const storeProducts = await productService.loadProducts();
     res.status(200).json(storeProducts);
-  });
+  }); */
 
   router.get('*', (req, res) => {
     res.status(404).send('Error 404');

@@ -1,12 +1,12 @@
 {
-  "name": "reto9",
+  "name": "boilerplate_single_api",
   "version": 2,
   "builds": [{ "src":"src/index.js", "use":"@now/node"}],
   "routes":[{ "src":"/(.*)", "dest":"src/index.js" }],
   "env": {
-    "DB_USER":"@reto9_bd_user",
-    "DB_PASSWORD":"@reto9_bd_pass",
-    "DB_HOST":"@reto9_bd_host",
+    "DB_USER":"",
+    "DB_PASSWORD":"",
+    "DB_HOST":"",
     "DB_NAME":"@reto9_bd_name"
   }
 }
