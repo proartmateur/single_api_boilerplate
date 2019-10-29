@@ -20,7 +20,9 @@ const productsRouter = router => {
   router.post('/products', async (req, res, next) => {
     const { body: product } = req;
     const storeProduct = await productService.createPtoduct(product);
-    res.status(201).json({ productId: storeProduct, message: strings.product });
+    res
+      .status(201)
+      .json({ productId: storeProduct, message: strings.product.created });
   });
 
   // eslint-disable-next-line no-unused-vars
