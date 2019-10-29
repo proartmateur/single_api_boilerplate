@@ -1,8 +1,8 @@
 from lib import *
 from serviceMaker import *
 from routeMaker import *
-services_path = "./services/"
-routes_path = "./routes/"
+services_path = "../../services/"
+routes_path = "../../routes/"
 
 entities = load('entities.json')
 

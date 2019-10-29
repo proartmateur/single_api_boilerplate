@@ -3,6 +3,7 @@ const path = require('path');
 const receipt = '../assets/receipt.pdf';
 
 const usersRouter = require('./users');
+const suscribersRouter = require('./suscribers');
 const productsRouter = require('./products');
 
 const platziStore = app => {
@@ -10,6 +11,7 @@ const platziStore = app => {
   app.use('/api/', router);
 
   usersRouter(router);
+  suscribersRouter(router);
   productsRouter(router);
 
   router.get('/', (req, res) => {
