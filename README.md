@@ -12,4 +12,4 @@ npm run start
 ```
 
 ### Licencia
-escuelajs-reto-09 se lanza bajo la licencia [MIT](https://opensource.org/licenses/MIT).
+API Boilerplate se lanza bajo la licencia [MIT](https://opensource.org/licenses/MIT).
